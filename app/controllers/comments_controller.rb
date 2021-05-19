@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
 
     if @comment.save
       render json: CommentSerializer.new(@comment).serializable_hash[:data][:attributes], status: :created, location: @comment
@@ -46,6 +46,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:name, :description)
+      params.require(:comment).permit(:name, :description, :created_at, :post_id)
     end
 end

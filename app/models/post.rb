@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
-    has_one_attached :post_image
+    has_one_attached :picture
     has_many :comments 
 
-    def post_image_url 
-        Rails.application.routes.url_helpers.url_for(post_image) if post_image.attached?
+    def picture_url 
+        Rails.application.routes.url_helpers.url_for(picture) if picture.attached?
     end 
 end

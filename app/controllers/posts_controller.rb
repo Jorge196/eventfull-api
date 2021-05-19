@@ -10,7 +10,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
-    render json: @post
+    hash = PostSerializer.new(@post, include: [:comments]).serializable_hash
+    render json: { 
+      post: hash[:data][:attributes],
+      comments: hash[:included].map{|comment| comment[:attributes]}
+    }
   end
 
   # POST /posts
@@ -35,4 +39,6 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:name, :picture)
     end
-end
+
+end 
+
