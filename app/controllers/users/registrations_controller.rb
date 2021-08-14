@@ -66,7 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       render json: {
         status: {code: 200, message: 'Signed up sucessfully.'},
-        data: UserSerializer.new(resource).serializable_hash[:data].map{|data| data[:attributes]}
+        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }
     else
       render json: {

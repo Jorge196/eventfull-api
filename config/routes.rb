@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  get 'private/test'
   get '/current_user', to: 'current_user#index'
   resources :comments
   resources :posts, except: [:update, :destroy]
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   },
   controllers: {
     sessions: 'users/sessions',
-    registration: 'users/registration'
+    registrations: 'users/registrations'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
