@@ -6,5 +6,3 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-post1 = Post.find_or_create_by(name: 'Instagram post')
-post2 = Post.find_or_create_by(name: 'Another instagram post')
